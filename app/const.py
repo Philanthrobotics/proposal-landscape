@@ -7,9 +7,9 @@ from random import randint
 PREFIX = 'LANDSCAPE_APP_'
 
 # If running locally, read data from the filesystem
-if 'sferg' in os.path.expanduser('~'):
+if 'kevinmcpherson' in os.path.expanduser('~'):
   PATH = 'data/'
-  df = pd.read_csv(PATH + PREFIX + 'Proposal_Similarity_DataFrame.csv')
+  df = pd.read_csv(PATH + PREFIX + 'mental_health_proposals.csv')
   embeddings = pickle.load(open(PATH + PREFIX + 'embeddings.pkl', 'rb'))
   knn_indices = pickle.load(open(PATH + PREFIX + 'knn_indices.pkl', 'rb'))
   topics = pickle.load(open(PATH + PREFIX + 'topics.pkl', 'rb'))
@@ -26,7 +26,7 @@ else:
   df = pd.read_csv(
     s3.get_object(
       Bucket=BUCKET,
-      Key=PREFIX + 'Proposal_Similarity_DataFrame.csv'
+      Key=PREFIX + 'mental_health_proposals.csv'
       )['Body']
     )
   embeddings = pickle.loads(

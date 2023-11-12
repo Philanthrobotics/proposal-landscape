@@ -7,3 +7,4 @@ data/
 .env
 __secrets__.py
 venv/
+notebooks/
